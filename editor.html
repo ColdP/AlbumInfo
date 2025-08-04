@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlbumData Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* iOS-inspired Design System with Inter font */
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            background-color: #f2f2f7;
+            color: #1c1c1e;
+        }
+
+        .ios-header {
+            background-color: rgba(248, 248, 248, 0.8);
+            border-bottom: 1px solid #d1d1d6;
+            backdrop-filter: blur(10px);
+        }
+
+        .ios-group {
+            background-color: #ffffff;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .ios-input-container {
+            display: flex;
+            align-items: center;
+            padding: 11px 16px;
+            border-bottom: 1px solid #e5e5ea;
+        }
+
+        .ios-group .ios-input-container:last-child {
+            border-bottom: none;
+        }
+
+        .ios-label {
+            width: 120px;
+            flex-shrink: 0;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .ios-input, .ios-textarea {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            background-color: transparent;
+            color: #333;
+        }
+        
+        .ios-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .ios-button {
+            background-color: #007aff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .ios-button:hover {
+            background-color: #005ecb;
+        }
+        
+        .ios-note {
+            color: #6d6d72;
+            font-size: 13px;
+            padding: 0;
+            margin-top: 4px;
+        }
+        
+        .code-block-container {
+            background-color: #1c1c1e;
+            border-radius: 10px;
+            padding: 12px 16px;
+            overflow-x: auto; /* Added scroll for overflow */
+        }
+
+        #output {
+            color: #d1d1d6;
+            white-space: pre;
+            font-family: "SF Mono", "Menlo", "Monaco", "Consolas", "Courier New", monospace;
+            font-size: 14px;
+        }
+        
+        .copy-btn {
+            background-color: #e5e5ea;
+            color: #007aff;
+            border: none;
+            border-radius: 8px;
+            padding: 5px 12px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .copy-btn:hover {
+            background-color: #d1d1d6;
+        }
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="ios-header sticky top-0 z-10">
+        <div class="max-w-4xl mx-auto p-4">
+            <h1 class="text-2xl font-bold text-center">AlbumData Generator</h1>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-4 md:p-6">
+        <form id="album-form">
+            <!-- Album Overview Section -->
+            <div class="ios-group">
+                <div class="ios-input-container">
+                    <label for="title" class="ios-label">Album Title</label>
+                    <input type="text" id="title" class="ios-input" value="MANNEQUIN">
+                </div>
+                <div class="ios-input-container">
+                    <label for="artist" class="ios-label">Artist</label>
+                    <input type="text" id="artist" class="ios-input" value="DECO*27">
+                </div>
+                <div class="ios-input-container">
+                    <label for="releaseDate" class="ios-label">Release Date</label>
+                    <input type="text" id="releaseDate" class="ios-input" value="2022.03.09">
+                </div>
+                <div class="ios-input-container">
+                    <label for="label" class="ios-label">Label</label>
+                    <input type="text" id="label" class="ios-input" value="NBCUniversal Entertainment">
+                </div>
+                <div class="ios-input-container">
+                    <label for="coverUrl" class="ios-label">Cover URL</label>
+                    <input type="url" id="coverUrl" class="ios-input" value="https://album-info.0m-p.space/DECO27/MANNEQUIN/cover.jpg">
+                </div>
+            </div>
+            
+            <!-- Album Notes Section -->
+            <div class="ios-group">
+                <div class="p-4 border-b border-gray-200">
+                    <label for="notes" class="ios-label p-0">Album Notes</label>
+                </div>
+                <div class="p-4">
+                    <textarea id="notes" class="ios-textarea">DECO*27's 8th album is a collection of songs with strong individuality, including the big hit "Vampire", "Cinderella", "Animal", and "Mozaik Role (Reloaded)", a remake from 11 years ago. With these unique songs and DECO*27's overwhelming "Hatsune Miku love," Miku becomes an idol!</textarea>
+                </div>
+            </div>
+
+            <!-- Track List Section -->
+            <div class="ios-group">
+                <div class="p-4 border-b border-gray-200">
+                    <label for="tracklist" class="ios-label p-0">Track List</label>
+                    <p class="ios-note">One song per line</p>
+                </div>
+                <div class="p-4">
+                    <textarea id="tracklist" class="ios-textarea">ヴァンパイア
+アニマル
+状態異常彼女
+U
+シンデレラ
+ケサランパサラン
+ギフト
+パラサイト
+ジレンマ
+おじゃま虫II
+モザイクロール (Reloaded)</textarea>
+                </div>
+            </div>
+
+            <!-- Links Section -->
+            <div class="ios-group">
+                 <div class="p-4 border-b border-gray-200">
+                    <h2 class="ios-label p-0">Links</h2>
+                </div>
+                <div class="ios-input-container">
+                    <label for="streaming" class="ios-label">Streaming</label>
+                    <input type="url" id="streaming" class="ios-input" value="https://nex-tone.link/A00094938">
+                </div>
+                <div class="ios-input-container">
+                    <label for="officialPage" class="ios-label">Official Page</label>
+                    <input type="url" id="officialPage" class="ios-input" value="https://nbcuni-music.com/deco27/mq/">
+                </div>
+                <div class="p-4 border-t border-gray-200">
+                     <h3 class="ios-label p-0">Social Media</h3>
+                </div>
+                <div class="ios-input-container">
+                    <label for="youtube" class="ios-label">YouTube</label>
+                    <input type="url" id="youtube" class="ios-input" value="https://www.youtube.com/@DECO27">
+                </div>
+                 <div class="ios-input-container">
+                    <label for="x" class="ios-label">X (Twitter)</label>
+                    <input type="url" id="x" class="ios-input" value="https://x.com/DECO27">
+                </div>
+                 <div class="ios-input-container">
+                    <label for="instagram" class="ios-label">Instagram</label>
+                    <input type="url" id="instagram" class="ios-input" value="https://www.instagram.com/deco27_39/">
+                </div>
+                 <div class="ios-input-container">
+                    <label for="tiktok" class="ios-label">TikTok</label>
+                    <input type="url" id="tiktok" class="ios-input" value="https://www.tiktok.com/@deco27_official">
+                </div>
+            </div>
+
+            <!-- Movies Section -->
+            <div class="ios-group">
+                <div class="p-4 border-b border-gray-200">
+                    <label for="movies" class="ios-label p-0">Movies</label>
+                    <p class="ios-note">One movie per line, format:<br>Title,Thumbnail URL,YouTube URL</p>
+                </div>
+                <div class="p-4">
+                    <textarea id="movies" class="ios-textarea">ジレンマ,https://nbcuni-music.com/deco27/mq/lib/img/thum_dilemma.png,https://www.youtube.com/watch?v=E_PfhNftyh4
+パラサイト,https://nbcuni-music.com/deco27/mq/lib/img/thum_parasite.png,https://www.youtube.com/watch?v=agcoHM2CJ3s
+アニマル,https://nbcuni-music.com/deco27/mq/lib/img/thum_animal.png,https://www.youtube.com/watch?v=HtBqK6xsQ9k
+シンデレラ,https://nbcuni-music.com/deco27/mq/lib/img/thum_cinderella.png,https://www.youtube.com/watch?v=adGhT_-JbZI
+モザイクロール (Reloaded),https://nbcuni-music.com/deco27/mq/lib/img/thum_mozaikRole_r.png,https://www.youtube.com/watch?v=WysuxO4yR04
+おじゃま虫II,https://nbcuni-music.com/deco27/mq/lib/img/thum_OM2.png,https://www.youtube.com/watch?v=EJMf1NdrYjo
+ヴァンパイア,https://nbcuni-music.com/deco27/mq/lib/img/thum_vampire.png,https://www.youtube.com/watch?v=e1xCOsgWG0M</textarea>
+                </div>
+            </div>
+
+            <!-- Copyright Section -->
+            <div class="ios-group">
+                <div class="p-4 border-b border-gray-200">
+                    <label for="copyright" class="ios-label p-0">Copyright</label>
+                    <p class="ios-note">One line per entry</p>
+                </div>
+                <div class="p-4">
+                    <textarea id="copyright" class="ios-textarea">Copyright © 2022 Universal Studios. All Rights Reserved.
+Art by 八三 © Crypton Future Media, INC. www.piapro.net
+© DECO*27 © OTOIRO</textarea>
+                </div>
+            </div>
+
+            <button type="button" id="generate-btn" class="ios-button w-full mt-4">Generate AlbumData</button>
+        </form>
+
+        <!-- Output Section -->
+        <div class="mt-10">
+            <div class="flex justify-between items-center mb-2">
+                <h2 class="text-xl font-bold">Generated Code</h2>
+                <button type="button" id="copy-btn" class="copy-btn">Copy</button>
+            </div>
+            <div class="code-block-container">
+                <pre><code id="output">Click the button above to generate the code...</code></pre>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const generateBtn = document.getElementById('generate-btn');
+            const copyBtn = document.getElementById('copy-btn');
+            const outputEl = document.getElementById('output');
+
+            generateBtn.addEventListener('click', () => {
+                // Helper function to get value from an element
+                const getValue = (id) => document.getElementById(id).value.trim();
+                
+                // Helper function to get lines from a textarea
+                const getLines = (id) => getValue(id).split('\n').map(line => line.trim()).filter(line => line.length > 0);
+
+                // Constructing the social links object (icons are hardcoded in the target file)
+                const socialLinks = [
+                    { name: "YouTube", url: getValue('youtube'), icon: `<svg class="icon-themed w-6 h-6 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 48 33.82"><path d="M47,5.28c-.55-2.08-2.18-3.72-4.24-4.27-3.74-1.01-18.75-1.01-18.75-1.01,0,0-15.01,0-18.75,1.01C3.18,1.57,1.55,3.2,1,5.28c-1,3.77-1,11.63-1,11.63,0,0,0,7.86,1,11.63.55,2.08,2.18,3.72,4.24,4.27,3.74,1.01,18.75,1.01,18.75,1.01,0,0,15.01,0,18.75-1.01,2.07-.56,3.69-2.19,4.24-4.27,1-3.77,1-11.63,1-11.63,0,0,0-7.86-1-11.63ZM19.09,24.05v-14.27l12.55,7.14-12.55,7.14Z"/></svg>` },
+                    { name: "X", url: getValue('x'), icon: `<svg class="icon-themed w-6 h-6 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 35.96 36.75"><path d="M21.4,15.56L34.78,0h-3.17l-11.62,13.51L10.71,0H0l14.04,20.43L0,36.75h3.17l12.27-14.27,9.8,14.27h10.71l-14.56-21.19h0ZM17.05,20.61l-1.42-2.03L4.32,2.39h4.87l9.13,13.06,1.42,2.03,11.87,16.98h-4.87l-9.69-13.86h0Z"/></svg>` },
+                    { name: "Instagram", url: getValue('instagram'), icon: `<svg class="icon-themed w-6 h-6 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 42 42"><path d="M12.3.15c-2.23.11-3.76.46-5.09.99-1.38.54-2.55,1.26-3.71,2.43-1.17,1.17-1.88,2.34-2.42,3.72-.52,1.34-.87,2.86-.97,5.1C.01,14.62,0,15.34,0,21.04c.01,5.7.04,6.42.14,8.66.11,2.23.46,3.76.99,5.09.54,1.38,1.26,2.55,2.43,3.72,1.17,1.16,2.34,1.88,3.72,2.41,1.34.52,2.86.87,5.1.97,2.24.1,2.95.12,8.66.11,5.7-.01,6.42-.04,8.66-.14,2.23-.11,3.76-.46,5.09-.99,1.38-.54,2.55-1.26,3.71-2.43,1.16-1.17,1.88-2.34,2.41-3.72.52-1.34.87,2.86.97-5.1.1-2.24.12-2.96.11-8.66-.01-5.7-.04-6.42-.14-8.66-.11-2.24-.46-3.76-.99-5.1-.54-1.38-1.26-2.55-2.43-3.72-1.17-1.16-2.34-1.88-3.72-2.41-1.34-.52-2.86-.87-5.1-.97C27.38.01,26.66,0,20.96,0c-5.7.01-6.42.04-8.66.14M12.55,38.11c-2.05-.09-3.16-.43-3.9-.71-.98-.38-1.68-.83-2.42-1.57-.74-.73-1.19-1.43-1.58-2.41-.29-.74-.63-1.85-.73-3.9-.1-2.21-.13-2.88-.14-8.48-.01-5.61,0-6.27.11-8.49.09-2.05.43-3.16.71-3.9.38-.98.83-1.68,1.57-2.42.73-.74,1.43-1.19,2.41-1.58.74-.29,1.85-.63,3.9-.73,2.21-.1,2.88-.13,8.48-.14,5.61-.01,6.27,0,8.49.11,2.05.09,3.16.43,3.9.71.98-.38,1.68.83,2.42,1.57.74.73,1.19,1.43,1.58,2.41.29.74.63,1.85.73,3.9.11,2.21.13,2.88.14,8.48.01,5.61,0,6.27-.11,8.49-.09-2.05-.43-3.16-.71-3.9-.38-.98-.83-1.68-1.57-2.42-.73-.73-1.43-1.19-2.41-1.58-.74-.29-1.85-.63-3.9.73-2.21.1-2.88.13-8.49.14-5.61.01-6.27-.01-8.48-.11M29.67,9.77c0,1.39,1.13,2.52,2.52,2.51,1.39,0,2.52-1.13,2.52-2.52,0-1.39-1.13-2.52-2.52-2.51-1.39,0-2.52,1.13-2.51,2.52M10.22,21.02c.01,5.96,4.85,10.77,10.8,10.76,5.95-.01,10.77-4.85,10.76-10.8-.01-5.95-4.85-10.77-10.8-10.76-5.95.01-10.77,4.85-10.76,10.8M14,21.01c0-3.87,3.12-7.01,6.99-7.01,3.87,0,7.01,3.12,7.01,6.99,0,3.87-3.12,7.01-6.99,7.01-3.86,0-7.01-3.12-7.01-6.99"/></svg>` },
+                    { name: "TikTok", url: getValue('tiktok'), icon: `<svg class="icon-themed w-6 h-6 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 34 38.99"><path d="M28.92,7.81c-2.1-1.37-3.62-3.56-4.09-6.11-.1-.55-.16-1.12-.16-1.7h-6.7v26.86c-.12,3.01-2.6,5.42-5.63,5.42-.94,0-1.83-.24-2.61-.65-1.79-.94-3.02-2.82-3.02-4.99,0-3.11,2.53-5.63,5.63-5.63.58,0,1.14.1,1.66.26v-6.84c-.54-.07-1.1-.12-1.66-.12-6.8,0-12.34,5.53-12.34,12.34,0,4.17,2.08,7.87,5.27,10.1,2,1.41,4.44,2.24,7.07,2.24,6.8,0,12.34-5.53,12.34-12.34v-13.62c2.63,1.89,5.85,3,9.33,3v-6.7c-1.87,0-3.62-.56-5.08-1.51Z"/></svg>` }
+                ].filter(link => link.url); // Filter out empty social links
+
+                // Process movies
+                const movies = getLines('movies').map(line => {
+                    const parts = line.split(',');
+                    if (parts.length === 3) {
+                        return { title: parts[0].trim(), thumb: parts[1].trim(), url: parts[2].trim() };
+                    }
+                    return null;
+                }).filter(movie => movie !== null);
+
+                // The final data object
+                const generatedData = {
+                    title: getValue('title'),
+                    artist: getValue('artist'),
+                    releaseDate: getValue('releaseDate'),
+                    label: getValue('label'),
+                    coverUrl: getValue('coverUrl'),
+                    notes: getValue('notes'),
+                    tracklist: getLines('tracklist'),
+                    links: { streaming: getValue('streaming'), officialPage: getValue('officialPage'), social: socialLinks },
+                    movies: movies,
+                    copyright: getLines('copyright')
+                };
+
+                // Display the generated JSON string
+                const jsonString = `const albumData = ${JSON.stringify(generatedData, null, 4)};`;
+                outputEl.textContent = jsonString;
+            });
+
+            copyBtn.addEventListener('click', () => {
+                const codeToCopy = outputEl.textContent;
+                if (codeToCopy.startsWith('Click the button')) return;
+
+                // Use the document.execCommand('copy') for better compatibility in iFrames
+                const textArea = document.createElement("textarea");
+                textArea.value = codeToCopy;
+                
+                // Avoid scrolling to bottom
+                textArea.style.top = "0";
+                textArea.style.left = "0";
+                textArea.style.position = "fixed";
+
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                try {
+                    const successful = document.execCommand('copy');
+                    if (successful) {
+                        copyBtn.textContent = 'Copied!';
+                    } else {
+                        copyBtn.textContent = 'Error';
+                    }
+                } catch (err) {
+                    console.error('Fallback: Oops, unable to copy', err);
+                    copyBtn.textContent = 'Error';
+                }
+
+                document.body.removeChild(textArea);
+                
+                setTimeout(() => { copyBtn.textContent = 'Copy'; }, 2000);
+            });
+        });
+    </script>
+
+</body>
+</html>
